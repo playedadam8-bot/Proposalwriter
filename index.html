@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10191d">
+<title>Shawkat Proposals — AI Freelance Assistant</title>
+<style>
+:root{color-scheme:dark;--bg:#10191d;--panel:#18272d;--panel2:#122026;--text:#edf5f5;--muted:#9bb0b5;--line:#30454d;--accent:#56c6bb;--accent2:#b8eee7;--danger:#ff887d;--good:#7ed6a7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1b343a 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif;padding:26px 15px 60px}
+main{max-width:980px;margin:auto}.head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}.brand{font-size:27px;letter-spacing:-.8px;margin:0;font-weight:800}.brand span{color:var(--accent)}.sub{color:var(--muted);margin:5px 0 0}.pill{border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--accent2);font-size:12px;white-space:nowrap}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{background:linear-gradient(160deg,var(--panel),#152329);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px;box-shadow:0 10px 30px #0002}.wide{grid-column:1/-1}h2{font-size:16px;margin:0 0 13px}label{display:block;font-size:12px;font-weight:700;color:#c7d8da;margin:0 0 6px}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--text);padding:11px 12px;font:14px/1.45 inherit;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px #56c6bb22}textarea{resize:vertical;min-height:105px}#job{min-height:220px}.field{margin-bottom:12px}.hint{font-size:11px;color:var(--muted);margin-top:5px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}button{border:0;border-radius:8px;padding:11px 16px;background:var(--accent);color:#08201e;font-weight:800;font-size:14px;cursor:pointer}button.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}button:disabled{opacity:.55;cursor:wait}.error{color:var(--danger);min-height:20px;margin:9px 0 0;font-size:13px}.result{white-space:pre-wrap;overflow-wrap:anywhere;background:#0e1a1e;border:1px solid var(--line);padding:15px;border-radius:9px;min-height:100px}.resultTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.score{font-size:24px;font-weight:850;color:var(--accent)}.small{font-size:12px;color:var(--muted)}.meter{height:8px;border-radius:9px;background:#30434a;overflow:hidden;margin:7px 0 14px}.meter i{display:block;height:100%;background:var(--accent);width:0}.section{margin-top:18px}.hidden{display:none!important}.foot{color:var(--muted);font-size:11px;text-align:center;margin-top:15px}a{color:var(--accent2)}.status{font-size:11px;color:var(--muted);margin-top:5px}.good{color:var(--good)}@media(max-width:680px){.grid,.row{grid-template-columns:1fr}.wide{grid-column:auto}.head{display:block}.pill{display:inline-block;margin-top:10px}}
+</style>
+</head>
+<body>
+<main>
+<header class="head">
+ <div><h1 class="brand">Shawkat <span>Proposals</span></h1><p class="sub">A client-focused proposal strategist that sells your real value.</p></div>
+ <div class="pill">PERSONAL FREELANCE WORKSPACE</div>
+</header>
+
+<div class="card">
+ <h2>Your profile</h2>
+ <div class="field"><label for="profile">ABOUT YOU — your real skills and experience</label>
+ <textarea id="profile">I'm a freelance Web Developer and Digital Designer. I build modern, responsive websites and digital experiences, with a focus on clean UI, clear navigation and practical functionality.
+
+Skills:
+• HTML, CSS and JavaScript
+• React.js and Next.js
+• Responsive website design and development
+• Business websites and landing pages
+• eCommerce website development
+• WordPress development and customization
+• UI/UX design
+• Supabase and database integration
+• Website bug fixing and improvements
+• Logo design, branding and digital graphics
+
+I focus on understanding the client's requirements, communicating clearly and delivering polished work. I do not claim experience, results or client work that I cannot verify.</textarea>
+ <div class="hint">Edit this whenever your skills or experience change. The assistant must not invent credentials, years, client results or platform expertise.</div></div>
+ <div class="row">
+  <div class="field"><label for="portfolio">PORTFOLIO URL</label><input id="portfolio" type="url" value="https://shawkatdesign.site.je"></div>
+  <div class="field"><label for="platform">PLATFORM</label><select id="platform"><option>Upwork</option><option>Fiverr</option><option>Direct client</option></select></div>
+ </div>
+ <div class="row">
+  <div class="field"><label for="tone">PROPOSAL TONE</label><select id="tone"><option>Friendly and confident</option><option>Direct and concise</option><option>Warm and conversational</option><option>Professional</option></select></div>
+  <div class="field"><label for="model">AI MODEL</label><select id="model"><option value="deepseek/deepseek-chat">DeepSeek Chat</option><option value="anthropic/claude-sonnet-4.5">Claude Sonnet 4.5</option><option value="openai/gpt-4o">GPT-4o</option><option value="google/gemini-2.5-pro">Gemini 2.5 Pro</option></select><div class="status" id="modelStatus">Loading available OpenRouter models…</div></div>
+ </div>
+ <div class="field"><label for="apiKey">OPENROUTER API KEY</label><input id="apiKey" type="password" placeholder="Paste your sk-or-... key" autocomplete="off"><div class="hint">Saved in this browser only. Get a key at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a>. Never share this HTML file with your key inside it.</div></div>
+</div>
+
+<div class="grid">
+ <div class="card wide">
+  <h2>Job details</h2>
+  <div class="field"><label for="job">PASTE THE FULL JOB POST</label><textarea id="job" placeholder="Paste the client's complete job description, including requirements, questions, budget and client activity..."></textarea></div>
+  <div class="row">
+   <div class="field"><label for="client">CLIENT INFORMATION (optional)</label><textarea id="client" placeholder="Hire rate, payment verification, reviews, previous jobs, location, proposal count..."></textarea></div>
+   <div class="field"><label for="work">RELEVANT PORTFOLIO NOTES (optional)</label><textarea id="work" placeholder="Paste links or describe the projects you want considered. The AI will not pretend it inspected a link it cannot access."></textarea></div>
+  </div>
+  <div class="actions"><button id="generate">Analyze job & write proposal</button><button class="secondary" id="clear">Clear job</button></div>
+  <p class="error" id="error" role="alert"></p>
+  <div class="actions hidden" id="fallbackActions"><button class="secondary" id="fallback">Retry with DeepSeek</button></div>
+ </div>
+</div>
+
+<div class="card hidden" id="progressCard" aria-live="polite">
+ <div class="resultTitle"><h2>Building your proposal</h2><span class="small" id="progressPercent">0%</span></div>
+ <div class="meter"><i id="progressBar"></i></div>
+ <div class="result" id="progressStatus">Getting ready…</div>
+ <div class="small" style="margin-top:9px">These are workflow indicators, not a live view of the model's private reasoning.</div>
+</div>
+
+<div class="card hidden" id="outputCard">
+ <div class="resultTitle"><h2>Proposal</h2><span class="small" id="wordCount"></span></div>
+ <div class="result" id="proposal"></div>
+ <div class="actions"><button id="copyProposal">Copy proposal</button><button class="secondary" id="regenerate">Generate another version</button></div>
+ <div class="section"><div class="resultTitle"><h2>Job-fit score</h2><div class="score" id="score">—/100</div></div><div class="meter"><i id="scoreBar"></i></div><div class="small" id="scoreNote"></div></div>
+ <div class="section"><h2>Job analysis</h2><div class="result" id="analysis"></div></div>
+ <div class="section"><h2>Skill gaps & truth check</h2><div class="result" id="skillGaps"></div></div>
+ <div class="section"><h2>Suggested next move</h2><div class="result" id="nextMove"></div></div>
+</div>
+<p class="foot">Your API key is stored in this browser only. For personal use; do not publish this file with a personal API key embedded.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const saved=['profile','portfolio','platform','tone','model'];
+saved.forEach(id=>{try{const v=localStorage.getItem('shawkat_'+id);if(v!==null)$(id).value=v;$(id).addEventListener('input',()=>localStorage.setItem('shawkat_'+id,$(id).value));$(id).addEventListener('change',()=>localStorage.setItem('shawkat_'+id,$(id).value))}catch(e){}});
+try{$('apiKey').value=localStorage.getItem('shawkat_openrouter_key')||''}catch(e){}
+$('apiKey').addEventListener('input',()=>{try{localStorage.setItem('shawkat_openrouter_key',$('apiKey').value.trim())}catch(e){}});
+function getKey(){return $('apiKey').value.trim()}
+
+const SYSTEM=`You are Shawkat Proposals, a high-level freelance proposal strategist and honest job-fit analyst. Your purpose is to help the freelancer win suitable work by making the client's reason to hire them obvious. Write like a sharp, commercially aware human freelancer: specific, confident, natural, concise and truthful. Never sound like a generic AI proposal generator.
+
+Return valid JSON only with exactly these keys:
+proposal (string), score (integer 0-100), score_note (string), analysis (string), skill_gaps (string), next_move (string).
+
+TRUTH AND EVIDENCE RULES — NON-NEGOTIABLE:
+- The freelancer profile and user-supplied portfolio notes are the only evidence for skills, experience, credentials, tools, client work and results.
+- Never invent years of experience, specialist expertise, completed projects, client names, metrics, testimonials, certifications, qualifications, platform experience or outcomes.
+- Related skills are transferable evidence, not proof of specialist experience. General eCommerce work does not prove Shopify expertise; React does not prove native mobile-app expertise; graphic design does not prove video-editing expertise; website development does not prove paid-ad management.
+- Do not claim to have opened, tested or inspected portfolio links. Use only descriptions and notes supplied by the freelancer.
+- Do not claim a capability simply because the client requests it.
+- If a requirement is missing, distinguish clearly between confirmed skills, transferable skills and unverified experience. Mention a gap in the proposal only when it is material to the client's decision.
+- If a mandatory requirement is clearly absent and there is no credible transferable route, advise against applying rather than disguising the gap.
+
+THE CLIENT-WINNING METHOD:
+Before writing, silently identify:
+1. What the client's business or project is trying to achieve.
+2. Who will use or benefit from the deliverable.
+3. The most important problem, risk or desired outcome behind the job post.
+4. The 1-3 requirements that matter most to successful delivery.
+5. The strongest truthful reason this freelancer is relevant.
+Use these insights to shape the proposal. Do not expose this planning as a checklist.
+
+PROPOSAL STANDARD:
+- Make every proposal unmistakably about this specific job. Use a meaningful detail from the brief and connect it to the client's actual business goal. Do not merely rephrase their requirements.
+- Lead with a useful observation, a clear solution angle, or a business-relevant insight. The first sentence should make the client feel that the freelancer understands what matters.
+- Sell the value the freelancer can genuinely deliver: the relevant skill, the practical execution, the quality of the deliverable, and why the approach helps the client. Make the value concrete rather than relying on adjectives.
+- Explain what would actually be done. Use 2-4 relevant actions or decisions, not a long task list.
+- Translate technical skills into client benefits where appropriate (for example, clear navigation helps customers find products; responsive layouts make the site usable on phones; sensible database integration supports reliable workflows). Do not promise guaranteed sales, rankings, speed scores or business outcomes.
+- Show capability through relevant reasoning and a credible plan, not invented authority or unsupported claims.
+- Be confident. Never beg, apologize unnecessarily, call the freelancer inexperienced, or use self-undermining language.
+- Do not use generic filler such as "I am excited to apply", "I understand your needs", "I am the perfect candidate", "I would love to help", "my approach combines", "I am passionate about", or "I can do this job perfectly". Avoid repetitive stock openings such as "For a [type] website..." unless it genuinely sounds natural for that brief.
+- Avoid vague claims like "high-quality work", "stunning design", "seamless experience" or "attention to detail" unless immediately supported by a specific explanation.
+- Do not force the same proposal structure every time. Vary the opening, flow and closing naturally to fit the job.
+- End with a natural next step or one useful, specific question only when it helps move the project forward. Do not add a question just to satisfy a formula. Avoid generic endings like "Let me know if you are interested."
+- Follow all explicit application instructions and answer every question the client asks. If they request a specific format, follow it.
+- Use short, readable paragraphs. No headings, bullet lists, emojis, fake enthusiasm, excessive flattery or em dashes unless the client explicitly asks for that format.
+- Do not discuss pricing, hourly rates, budgets or bidding strategy in the proposal.
+- Include the portfolio URL only when relevant. Never imply that you inspected it.
+
+WORD COUNT:
+- Choose length based on platform, job complexity and client instructions.
+- Upwork: usually 100-150 words; simple jobs 75-110; complex jobs 140-180.
+- Fiverr: usually 60-100 words unless the brief asks for more.
+- Direct client: usually 90-150 words.
+- Never exceed 180 words unless explicitly requested.
+- Do not pad. Every sentence must earn its place. Obey any strict client word limit first.
+
+JOB ANALYSIS AND SCORING:
+- Extract deliverables, must-have skills, tools/platforms, experience requirements, constraints, risks and client instructions.
+- In analysis, summarize the client's objective and the most important delivery requirements. State what makes the opportunity suitable or unsuitable.
+- In skill_gaps, separate confirmed matches, transferable skills, missing/unverified requirements and claims the freelancer must avoid.
+- Assess client-risk signals only from information the user supplied. If details are absent, say there is not enough information; never invent client activity, private platform data or risk.
+- Score job fit honestly, not proposal quality and not hiring probability. Use this guide: 90-100 = strong match with nearly all important requirements supported; 75-89 = good match with manageable gaps; 60-74 = partial match with meaningful gaps; 40-59 = weak match or a major unverified requirement; 0-39 = poor fit or missing essential capability. Do not inflate the score to encourage applying.
+- A mandatory missing skill must materially reduce the score, even if the proposal can be written persuasively.
+- In score_note, explain the main reason for the score and any key gap in one or two concise sentences.
+- In next_move, give one practical action before submitting (for example, prepare a relevant sample, clarify scope, or verify a required tool). If the job is a poor fit, say so plainly.
+- The proposal should still be the strongest honest version possible even when the job-fit score is low.
+- Return JSON only, without markdown fences. Escape quotation marks and line breaks correctly so the JSON parses.`;
+
+let busy=false,lastUser='';
+let progressTimer=null,progressIndex=0;
+const progressSteps=["Reading the client's brief…","Identifying the client's real objective…","Matching requirements to verified skills…","Choosing the right proposal angle…","Writing a specific, persuasive draft…","Checking tone, length and application instructions…","Reviewing claims for accuracy…","Preparing your proposal and job analysis…"];
+
+function showProgress(){
+ $('progressCard').classList.remove('hidden');progressIndex=0;
+ $('progressStatus').textContent=progressSteps[0];$('progressPercent').textContent='8%';$('progressBar').style.width='8%';
+ if(progressTimer)clearInterval(progressTimer);
+ progressTimer=setInterval(()=>{if(progressIndex<progressSteps.length-1)progressIndex++;const pct=Math.min(92,Math.round((progressIndex+1)/progressSteps.length*92));$('progressStatus').textContent=progressSteps[progressIndex];$('progressPercent').textContent=pct+'%';$('progressBar').style.width=pct+'%'},1300);
+}
+function finishProgress(ok){
+ if(progressTimer){clearInterval(progressTimer);progressTimer=null}
+ $('progressStatus').textContent=ok?'Done! Your proposal and analysis are ready.':'The request stopped. Check the error message and try again.';
+ if(ok){$('progressPercent').textContent='100%';$('progressBar').style.width='100%'}
+}
+function errorMessage(status,msg){
+ const m=String(msg||'').toLowerCase();
+ if(status===401||m.includes('invalid api key')||m.includes('unauthorized'))return 'OpenRouter rejected this API key. Check that the key is correct and active.';
+ if(status===402||m.includes('insufficient')||m.includes('credit')||m.includes('balance'))return 'This request could not be paid for with your current OpenRouter credits or account balance. Add credits, choose a lower-cost model, or use the DeepSeek fallback button. Code cannot bypass provider charges.';
+ if(status===429||m.includes('rate limit'))return 'This model/provider is rate-limited right now. Wait briefly or choose another available model.';
+ if(status===404||m.includes('no such model')||m.includes('model not found'))return 'This model ID is unavailable. Refresh the model list or select another model.';
+ if(status===400&&m.includes('context'))return 'The job post and profile may be too long for this model. Shorten the pasted text or choose a model with a larger context window.';
+ return msg||'The request failed. Check your connection, API key and selected model.';
+}
+async function loadModels(){
+ const status=$('modelStatus'),select=$('model'),previous=select.value;
+ try{
+  const r=await fetch('https://openrouter.ai/api/v1/models');
+  if(!r.ok)throw new Error('Model list unavailable');
+  const j=await r.json();const models=(j.data||[]).filter(x=>x.id&&x.name);
+  if(!models.length)throw new Error('No models returned');
+  const preferred=['deepseek/deepseek-chat','anthropic/claude-sonnet-4.5','openai/gpt-4o','google/gemini-2.5-pro'];
+  const byId=new Map(models.map(m=>[m.id,m]));
+  const ordered=[...preferred.filter(id=>byId.has(id)).map(id=>byId.get(id)),...models.filter(m=>!preferred.includes(m.id)).sort((a,b)=>a.name.localeCompare(b.name))];
+  select.innerHTML='';
+  ordered.forEach(m=>{const o=document.createElement('option');o.value=m.id;const p=m.pricing||{};const cost=(p.prompt!==undefined&&p.completion!==undefined)?` · input $${(Number(p.prompt)*1000000).toFixed(2)}/M` : '';o.textContent=m.name+' ('+m.id+')'+cost;select.appendChild(o)});
+  select.value=byId.has(previous)?previous:(byId.has('deepseek/deepseek-chat')?'deepseek/deepseek-chat':ordered[0].id);
+  status.textContent='Model list refreshed from OpenRouter. Availability and pricing can change.';status.className='status good';
+ }catch(e){status.textContent='Could not refresh model list. Showing built-in choices; model availability may have changed.';status.className='status'}
+}
+loadModels();
+
+async function run(forceModel=null){
+ if(busy)return;
+ const job=$('job').value.trim();$('error').textContent='';$('fallbackActions').classList.add('hidden');
+ if(!job){$('error').textContent='Paste the full job post first.';return}
+ const key=getKey();if(!key||key.length<10){$('error').textContent='Paste your OpenRouter API key in the API key field above.';$('apiKey').focus();return}
+ const selectedModel=forceModel||$('model').value;
+ busy=true;$('generate').disabled=$('regenerate').disabled=true;$('generate').textContent='Working…';$('outputCard').classList.add('hidden');showProgress();
+ const user=`Platform: ${$('platform').value}
+Tone: ${$('tone').value}
+Selected model: ${selectedModel}
+Freelancer profile:
+${$('profile').value}
+Portfolio URL (not inspected by the model):
+${$('portfolio').value}
+Relevant portfolio notes supplied by freelancer:
+${$('work').value||'None supplied'}
+Client information supplied by freelancer:
+${$('client').value||'None supplied'}
+Full client job post:
+${job}`;
+ lastUser=user;
+ let success=false;
+ try{
+  const body={model:selectedModel,temperature:.7,max_tokens:1250,messages:[{role:'system',content:SYSTEM},{role:'user',content:user+'\n\nReturn one valid JSON object with the exact required keys. Keep the proposal within the appropriate word range and obey every truth rule.'}]};
+  const res=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','X-Title':'Shawkat Proposals'},body:JSON.stringify(body)});
+  let data={};try{data=await res.json()}catch(e){}
+  if(!res.ok)throw Object.assign(new Error(errorMessage(res.status,data.error?.message||data.message)),{status:res.status,providerMessage:data.error?.message||data.message});
+  let raw=data.choices?.[0]?.message?.content;
+  if(Array.isArray(raw))raw=raw.map(x=>x.text||'').join('');
+  if(!raw)throw new Error('The selected model returned an empty response. Try another model.');
+  raw=String(raw).trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'');
+  let d;try{d=JSON.parse(raw)}catch(e){const a=raw.indexOf('{'),b=raw.lastIndexOf('}');if(a>=0&&b>a)d=JSON.parse(raw.slice(a,b+1));else throw new Error('The model response was not valid JSON. Try another model or regenerate.')}
+  if(!d.proposal)throw new Error('The model returned analysis but no proposal. Please regenerate or choose another model.');
+  $('proposal').textContent=String(d.proposal).trim();$('analysis').textContent=d.analysis||'No analysis returned.';$('skillGaps').textContent=d.skill_gaps||'No skill-gap check returned.';$('nextMove').textContent=d.next_move||'Review the proposal before submitting.';
+  const score=Math.max(0,Math.min(100,Number(d.score)||0));$('score').textContent=score+'/100';$('scoreBar').style.width=score+'%';$('scoreNote').textContent=(d.score_note||'')+' This is a job-fit assessment, not a hiring probability.';
+  $('wordCount').textContent=( $('proposal').textContent.trim().match(/\S+/g)||[]).length+' words · '+selectedModel;
+  $('outputCard').classList.remove('hidden');success=true;finishProgress(true);$('outputCard').scrollIntoView({behavior:'smooth'});
+ }catch(e){
+  finishProgress(false);$('error').textContent=e.message||'Something went wrong.';
+  const msg=String(e.message||'').toLowerCase();
+  if((e.status===402||msg.includes('credit')||msg.includes('balance')||msg.includes('insufficient'))&&selectedModel!=='deepseek/deepseek-chat')$('fallbackActions').classList.remove('hidden');
+ }finally{busy=false;$('generate').disabled=$('regenerate').disabled=false;$('generate').textContent='Analyze job & write proposal'}
+}
+$('generate').onclick=()=>run();$('regenerate').onclick=()=>run();
+$('fallback').onclick=()=>{if($('model').value!=='deepseek/deepseek-chat')$('model').value='deepseek/deepseek-chat';run('deepseek/deepseek-chat')};
+$('clear').onclick=()=>{$('job').value='';$('client').value='';$('work').value='';$('outputCard').classList.add('hidden');$('progressCard').classList.add('hidden');$('fallbackActions').classList.add('hidden');$('error').textContent=''};
+$('copyProposal').onclick=async()=>{try{await navigator.clipboard.writeText($('proposal').textContent);$('copyProposal').textContent='Copied!';setTimeout(()=>$('copyProposal').textContent='Copy proposal',1400)}catch(e){$('error').textContent='Clipboard unavailable. Select and copy the proposal manually.'}};
+</script>
+</body>
+</html>
